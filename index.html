@@ -70,11 +70,19 @@
             justify-content: space-between;
             padding: 0 32px;
             height: 56px;
-            border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
             background: var(--bg);
             z-index: 10;
+        }
+        nav::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary));
         }
 
         .nav-logo {
@@ -85,7 +93,12 @@
             color: #000;
         }
         html[data-theme="dark"] .nav-logo { color: #fff; }
-        .hero-logo { color: #000; }
+        .hero-logo {
+            color: #000;
+            max-width: 280px;
+            margin: 0 auto 32px;
+            transform: translateX(-12px);
+        }
         html[data-theme="dark"] .hero-logo { color: #fff; }
         .nav-logo svg {
             height: 100%;
@@ -111,31 +124,43 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 32px;
-            font-size: 14px;
-            color: var(--text-secondary);
+            gap: 12px;
         }
 
-        .nav-links a { color: var(--text-secondary); }
-        .nav-links a:hover { color: var(--text); }
+        .nav-links a {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            color: var(--text);
+            background: var(--brand-bg);
+            padding: 4px 8px;
+            border-radius: 9999px;
+            border: 1px solid var(--primary);
+            text-decoration: none;
+            transition: border-color 0.15s, color 0.15s;
+        }
+        .nav-links a:hover {
+            border-color: var(--secondary);
+            color: var(--primary);
+        }
 
         .theme-toggle {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 36px;
-            height: 36px;
+            width: 28px;
+            height: 28px;
             padding: 0;
-            border: none;
-            border-radius: 8px;
-            background: var(--bg-secondary);
-            color: var(--text-secondary);
+            border: 1px solid var(--primary);
+            border-radius: 9999px;
+            background: var(--brand-bg);
+            color: var(--text);
             cursor: pointer;
-            transition: color 0.15s, background 0.15s;
+            transition: border-color 0.15s, color 0.15s;
         }
         .theme-toggle:hover {
-            color: var(--text);
-            background: var(--border);
+            border-color: var(--secondary);
+            color: var(--primary);
         }
         .theme-toggle svg {
             width: 18px;
@@ -147,15 +172,23 @@
         html[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
         .nav-cta {
-            font-size: 13px;
+            font-size: 11px;
             font-weight: 500;
-            color: var(--bg) !important;
-            background: var(--gradient);
-            padding: 8px 18px;
-            border-radius: 8px;
+            letter-spacing: 0.5px;
+            color: var(--text) !important;
+            background: var(--brand-bg) !important;
+            padding: 4px 8px;
+            border-radius: 9999px;
+            border: 1px solid var(--primary);
+            text-decoration: none;
+            transition: border-color 0.15s, color 0.15s;
         }
 
-        .nav-cta:hover { opacity: 0.9 !important; }
+        .nav-cta:hover {
+            border-color: var(--secondary) !important;
+            color: var(--primary) !important;
+            opacity: 1;
+        }
 
         /* HERO */
         .hero {
@@ -249,26 +282,72 @@
         .btn-primary {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             font-size: 14px;
             font-weight: 500;
             color: var(--bg);
             background: var(--gradient);
-            padding: 12px 24px;
-            border-radius: 10px;
+            padding: 6px 14px;
+            border-radius: 9999px;
+        }
+        .btn-github {
+            color: #000;
+            background: #fff;
+            border: 1px solid #000;
+        }
+        .btn-github svg { fill: #000; }
+        .btn-github:hover {
+            color: #000;
+            background: #f5f5f5;
+            border-color: #000;
+        }
+        html[data-theme="dark"] .btn-github {
+            color: #fff;
+            background: #1a1a1a;
+            border-color: #fff;
+        }
+        html[data-theme="dark"] .btn-github svg { fill: #fff; }
+        html[data-theme="dark"] .btn-github:hover {
+            color: #fff;
+            background: #2a2a2a;
+            border-color: #fff;
         }
 
+        .btn-secondary-wrap {
+            display: inline-flex;
+            position: relative;
+        }
+        .btn-secondary-wrap::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 9999px;
+            padding: 1px;
+            box-sizing: border-box;
+            background: conic-gradient(var(--primary), var(--secondary), var(--primary));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            z-index: 0;
+        }
         .btn-secondary {
+            position: relative;
+            z-index: 1;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             font-size: 14px;
             font-weight: 400;
-            color: var(--text-secondary);
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            padding: 12px 24px;
-            border-radius: 10px;
+            color: var(--text);
+            background: var(--brand-bg);
+            border: none;
+            padding: 6px 14px;
+            border-radius: 9999px;
+            text-decoration: none;
+        }
+        .btn-secondary:hover {
+            color: var(--primary);
         }
 
         /* PRODUCTS */
@@ -406,13 +485,25 @@
 
         .footer-links {
             display: flex;
-            gap: 24px;
-            font-size: 13px;
-            color: var(--text-tertiary);
+            gap: 12px;
         }
 
-        .footer-links a { color: var(--text-tertiary); }
-        .footer-links a:hover { color: var(--text); }
+        .footer-links a {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            color: var(--text);
+            background: var(--brand-bg);
+            padding: 4px 8px;
+            border-radius: 9999px;
+            border: 1px solid var(--primary);
+            text-decoration: none;
+            transition: border-color 0.15s, color 0.15s;
+        }
+        .footer-links a:hover {
+            border-color: var(--secondary);
+            color: var(--primary);
+        }
 
         @media (max-width: 600px) {
             nav { padding: 10px 16px; }
@@ -420,8 +511,7 @@
             .nav-logo svg { height: 100%; }
             .nav-links { display: flex; gap: 12px; }
             .nav-links a[href="#products"],
-            .nav-links a[href="#about"],
-            .nav-links a[href^="https://github"] { display: none; }
+            .nav-links a[href="#about"] { display: none; }
             footer { padding: 24px 20px; }
         }
     </style>
@@ -446,7 +536,7 @@
     <div class="nav-links">
         <a href="#products">Products</a>
         <a href="#about">About</a>
-        <a href="https://github.com/etapsky" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="mailto:contact@etapsky.com" class="nav-cta" target="_blank" rel="noopener noreferrer">Contact</a>
         <button type="button" class="theme-toggle" aria-label="Toggle dark mode">
             <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                 <circle cx="12" cy="12" r="4"/>
@@ -456,13 +546,12 @@
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
             </svg>
         </button>
-        <a href="mailto:contact@etapsky.com" class="nav-cta" target="_blank" rel="noopener noreferrer">Contact</a>
     </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-    <div class="hero-logo" style="max-width:280px;margin:0 auto 32px;">
+    <div class="hero-logo">
         <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
             <g transform="translate(186, 90)">
                 <rect x="0" y="72" width="28" height="28" rx="4" fill="var(--primary)"/>
@@ -479,11 +568,11 @@
     <h1>Building tools that <span>move things forward</span></h1>
     <p>Etapsky develops open-source software and technology products focused on documents, data, and developer infrastructure.</p>
     <div class="hero-actions">
-        <a href="https://github.com/etapsky" class="btn-primary" target="_blank" rel="noopener noreferrer">
+        <a href="https://github.com/etapsky" class="btn-primary btn-github" target="_blank" rel="noopener noreferrer">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             View on GitHub
         </a>
-        <a href="mailto:contact@etapsky.com" class="btn-secondary" target="_blank" rel="noopener noreferrer">Get in touch</a>
+        <span class="btn-secondary-wrap"><a href="mailto:contact@etapsky.com" class="btn-secondary" target="_blank" rel="noopener noreferrer">Get in touch</a></span>
     </div>
 </section>
 

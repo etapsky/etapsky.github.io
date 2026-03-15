@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etapsky — Technology</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --purple: #534AB7;
+            --purple-light: #EEEDFE;
+            --green: #1D9E75;
+            --green-light: #E1F5EE;
+            --text: #1a1a1a;
+            --text-secondary: #6b6b6b;
+            --text-tertiary: #999;
+            --border: rgba(0,0,0,0.08);
+            --bg: #ffffff;
+            --bg-secondary: #f8f8f7;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --purple: #7F77DD;
+                --purple-light: #26215C;
+                --green: #5DCAA5;
+                --green-light: #04342C;
+                --text: #e8e8e6;
+                --text-secondary: #a0a09a;
+                --text-tertiary: #666;
+                --border: rgba(255,255,255,0.08);
+                --bg: #111110;
+                --bg-secondary: #1a1a19;
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: var(--purple); text-decoration: none; }
+        a:hover { opacity: 0.8; }
+
+        /* NAV */
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 48px;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            background: var(--bg);
+            z-index: 10;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-logo svg { width: 36px; height: 36px; }
+
+        .nav-wordmark {
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--text);
+            letter-spacing: -0.3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .nav-links a { color: var(--text-secondary); }
+        .nav-links a:hover { color: var(--text); }
+
+        .nav-cta {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--bg) !important;
+            background: var(--purple);
+            padding: 8px 18px;
+            border-radius: 8px;
+        }
+
+        .nav-cta:hover { opacity: 0.9 !important; }
+
+        /* HERO */
+        .hero {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 100px 24px 80px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--purple);
+            background: var(--purple-light);
+            padding: 5px 14px;
+            border-radius: 99px;
+            margin-bottom: 28px;
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 500;
+            line-height: 1.12;
+            letter-spacing: -1.5px;
+            color: var(--text);
+            margin-bottom: 24px;
+        }
+
+        .hero h1 span { color: var(--purple); }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 520px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--bg);
+            background: var(--purple);
+            padding: 12px 24px;
+            border-radius: 10px;
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--text-secondary);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            padding: 12px 24px;
+            border-radius: 10px;
+        }
+
+        /* PRODUCTS */
+        .section {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 80px 24px;
+        }
+
+        .section-label {
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-tertiary);
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(24px, 4vw, 36px);
+            font-weight: 500;
+            letter-spacing: -0.5px;
+            margin-bottom: 48px;
+            color: var(--text);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .product-card {
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 28px;
+            background: var(--bg-secondary);
+            transition: border-color 0.15s;
+        }
+
+        .product-card:hover { border-color: var(--purple); }
+
+        .product-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-icon.purple { background: var(--purple-light); }
+        .product-icon.green  { background: var(--green-light); }
+
+        .product-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            padding: 3px 10px;
+            border-radius: 99px;
+            margin-bottom: 12px;
+        }
+
+        .product-tag.soon {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            color: var(--text-tertiary);
+        }
+
+        .product-tag.active {
+            background: var(--green-light);
+            color: var(--green);
+        }
+
+        .product-card h3 {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .product-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* DIVIDER */
+        .divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 0 24px;
+        }
+
+        /* VALUES */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+        }
+
+        .value h4 {
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .value p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 32px 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: var(--text-tertiary);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            font-size: 13px;
+            color: var(--text-tertiary);
+        }
+
+        .footer-links a { color: var(--text-tertiary); }
+        .footer-links a:hover { color: var(--text); }
+
+        @media (max-width: 600px) {
+            nav { padding: 16px 20px; }
+            .nav-links { display: none; }
+            footer { padding: 24px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-logo">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="72" width="24" height="24" rx="4" fill="#534AB7"/>
+            <rect x="32" y="44" width="24" height="52" rx="4" fill="#1D9E75"/>
+            <rect x="64" y="16" width="24" height="80" rx="4" fill="#534AB7"/>
+            <polyline points="12,72 12,58 44,58 44,44 76,44 76,16" stroke="#534AB7" stroke-width="2" stroke-opacity="0.3" stroke-dasharray="4 4" fill="none"/>
+        </svg>
+        <span class="nav-wordmark">Etapsky</span>
+    </div>
+    <div class="nav-links">
+        <a href="#products">Products</a>
+        <a href="#about">About</a>
+        <a href="https://github.com/etapsky">GitHub</a>
+        <a href="mailto:hello@etapsky.dev" class="nav-cta">Contact</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-badge">Technology & Software</div>
+    <h1>Building tools that <span>move things forward</span></h1>
+    <p>Etapsky develops open-source software and technology products focused on documents, data, and developer infrastructure.</p>
+    <div class="hero-actions">
+        <a href="https://github.com/etapsky" class="btn-primary">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            View on GitHub
+        </a>
+        <a href="mailto:hello@etapsky.dev" class="btn-secondary">Get in touch</a>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- PRODUCTS -->
+<section class="section" id="products">
+    <div class="section-label">What we build</div>
+    <div class="section-title">Products & Projects</div>
+    <div class="products-grid">
+
+        <div class="product-card">
+            <div class="product-icon purple">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <rect x="3" y="2" width="14" height="16" rx="2" stroke="#534AB7" stroke-width="1.5"/>
+                    <line x1="6" y1="7" x2="14" y2="7" stroke="#534AB7" stroke-width="1.5" stroke-linecap="round"/>
+                    <line x1="6" y1="10" x2="14" y2="10" stroke="#534AB7" stroke-width="1.5" stroke-linecap="round"/>
+                    <line x1="6" y1="13" x2="10" y2="13" stroke="#534AB7" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <span class="product-tag active">Active</span>
+            <h3>SDF — Smart Document Format</h3>
+            <p>An open document format that combines human-readable visuals with machine-readable structured data in a single file.</p>
+        </div>
+
+        <div class="product-card">
+            <div class="product-icon green">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <rect x="2" y="12" width="5" height="6" rx="1.5" fill="#1D9E75"/>
+                    <rect x="8" y="7" width="5" height="11" rx="1.5" fill="#1D9E75"/>
+                    <rect x="14" y="2" width="5" height="16" rx="1.5" fill="#1D9E75"/>
+                </svg>
+            </div>
+            <span class="product-tag soon">Coming soon</span>
+            <h3>sdf-kit</h3>
+            <p>TypeScript SDK for producing and consuming SDF files. Works in Node.js, browser, and Electron environments.</p>
+        </div>
+
+        <div class="product-card">
+            <div class="product-icon purple">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <polyline points="3,15 3,5 10,10 17,5 17,15" stroke="#534AB7" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
+                </svg>
+            </div>
+            <span class="product-tag soon">Coming soon</span>
+            <h3>Developer Tools</h3>
+            <p>CLI utilities, integrations, and infrastructure tooling for modern software teams.</p>
+        </div>
+
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- ABOUT -->
+<section class="section" id="about">
+    <div class="section-label">About</div>
+    <div class="section-title">Built step by step</div>
+    <div class="values-grid">
+        <div class="value">
+            <h4>Open by default</h4>
+            <p>Our core work is open source. We believe good infrastructure belongs to everyone.</p>
+        </div>
+        <div class="value">
+            <h4>Developer-first</h4>
+            <p>Every product starts with the developer experience. Simple APIs, clear documentation, zero magic.</p>
+        </div>
+        <div class="value">
+            <h4>Interoperability</h4>
+            <p>We build on open standards and design for composability — no lock-in, no walled gardens.</p>
+        </div>
+        <div class="value">
+            <h4>Long-term thinking</h4>
+            <p>We move in phases, ship working software, and iterate. Step by step.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-left">
+        <svg width="20" height="20" viewBox="0 0 100 100" fill="none">
+            <rect x="0" y="72" width="24" height="24" rx="4" fill="#534AB7"/>
+            <rect x="32" y="44" width="24" height="52" rx="4" fill="#1D9E75"/>
+            <rect x="64" y="16" width="24" height="80" rx="4" fill="#534AB7"/>
+        </svg>
+        © 2026 Etapsky Inc.
+    </div>
+    <div class="footer-links">
+        <a href="https://github.com/etapsky">GitHub</a>
+        <a href="mailto:hello@etapsky.dev">hello@etapsky.dev</a>
+    </div>
+</footer>
+
+</body>
+</html>

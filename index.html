@@ -90,16 +90,18 @@
             align-items: center;
             height: 100%;
             max-width: 280px;
-            color: #000;
         }
-        html[data-theme="dark"] .nav-logo { color: #fff; }
         .hero-logo {
-            color: #000;
             max-width: 280px;
             margin: 0 auto 32px;
             transform: translateX(-12px);
         }
-        html[data-theme="dark"] .hero-logo { color: #fff; }
+        .hero-logo img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .nav-logo img,
         .nav-logo svg {
             height: 100%;
             width: auto;
@@ -508,6 +510,7 @@
         @media (max-width: 600px) {
             nav { padding: 10px 16px; }
             .nav-logo { max-width: 200px; }
+            .nav-logo img,
             .nav-logo svg { height: 100%; }
             .nav-links { display: flex; gap: 12px; }
             .nav-links a[href="#products"],
@@ -521,17 +524,7 @@
 <!-- NAV -->
 <nav>
     <div class="nav-logo">
-        <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
-            <g transform="translate(186, 90)">
-                <rect x="0" y="72" width="28" height="28" rx="4" fill="var(--primary)"/>
-                <rect x="36" y="44" width="28" height="56" rx="4" fill="var(--secondary)"/>
-                <rect x="72" y="16" width="28" height="84" rx="4" fill="var(--primary)"/>
-                <polyline points="14,72 14,60 50,60 50,44 86,44 86,16" fill="none" stroke="var(--primary)" stroke-width="1.5" stroke-opacity="0.3" stroke-dasharray="3 3"/>
-            </g>
-            <line x1="310" y1="110" x2="310" y2="195" stroke="var(--primary)" stroke-width="1" stroke-opacity="0.25"/>
-            <text x="320" y="158" fill="currentColor" font-family="inherit" font-size="52" font-weight="500">Etapsky</text>
-            <text x="320" y="200" fill="var(--text-secondary)" font-family="inherit" font-size="24" font-weight="600">TECHNOLOGY</text>
-        </svg>
+        <img src="assets/etapsky_logo.svg" alt="Etapsky" />
     </div>
     <div class="nav-links">
         <a href="#products">Products</a>
@@ -552,17 +545,7 @@
 <!-- HERO -->
 <section class="hero">
     <div class="hero-logo">
-        <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
-            <g transform="translate(186, 90)">
-                <rect x="0" y="72" width="28" height="28" rx="4" fill="var(--primary)"/>
-                <rect x="36" y="44" width="28" height="56" rx="4" fill="var(--secondary)"/>
-                <rect x="72" y="16" width="28" height="84" rx="4" fill="var(--primary)"/>
-                <polyline points="14,72 14,60 50,60 50,44 86,44 86,16" fill="none" stroke="var(--primary)" stroke-width="1.5" stroke-opacity="0.3" stroke-dasharray="3 3"/>
-            </g>
-            <line x1="310" y1="110" x2="310" y2="195" stroke="var(--primary)" stroke-width="1" stroke-opacity="0.25"/>
-            <text x="320" y="158" fill="currentColor" font-family="inherit" font-size="52" font-weight="500">Etapsky</text>
-            <text x="320" y="200" fill="var(--text-secondary)" font-family="inherit" font-size="24" font-weight="600">TECHNOLOGY</text>
-        </svg>
+        <img src="assets/etapsky_logo.svg" alt="Etapsky" />
     </div>
     <div class="hero-badge-wrap"><div class="hero-badge">Technology & Software</div></div>
     <h1>Building tools that <span>move things forward</span></h1>
@@ -654,11 +637,7 @@
 <!-- FOOTER -->
 <footer>
     <div class="footer-left">
-        <svg width="20" height="20" viewBox="0 0 100 100" fill="none">
-            <rect x="0" y="72" width="24" height="24" rx="4" fill="var(--primary)"/>
-            <rect x="32" y="44" width="24" height="52" rx="4" fill="var(--secondary)"/>
-            <rect x="64" y="16" width="24" height="80" rx="4" fill="var(--primary)"/>
-        </svg>
+        <img src="assets/etapsky_mark.svg" alt="" width="20" height="20" />
         © 2026 Etapsky Inc.
     </div>
     <div class="footer-links">

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="assets/etapsky_mark.svg" type="image/svg+xml">
-    <title>Etapsky — Technology</title>
+    <link rel="icon" href="./assets/etapsky_mark.svg" type="image/svg+xml">
+    <title>Etapsky® — Technology</title>
     <script>
       (function(){var d=document.documentElement,k='etapsky-theme',s=localStorage.getItem(k),p=window.matchMedia('(prefers-color-scheme: dark)').matches;d.setAttribute('data-theme',s||(p?'dark':'light'));})();
     </script>
@@ -69,10 +69,10 @@
             align-items: center;
             justify-content: space-between;
             padding: 0 32px;
-            height: 56px;
+            height: 72px;
             position: sticky;
             top: 0;
-            background: var(--bg);
+            background: transparent;
             z-index: 10;
         }
         nav::after {
@@ -88,7 +88,7 @@
         .nav-logo {
             display: flex;
             align-items: center;
-            height: 100%;
+            height: 120px;
             max-width: 280px;
         }
         .hero-logo {
@@ -204,6 +204,9 @@
             display: inline-block;
             position: relative;
             margin-bottom: 28px;
+            padding: 1px;
+            border-radius: 99px;
+            background: var(--bg);
             appearance: none;
             outline: none;
             box-shadow: 0 2px 8px rgba(0,0,0,0.06);
@@ -404,6 +407,7 @@
 
         .product-icon.primary { background: var(--primary-light); }
         .product-icon.secondary  { background: var(--secondary-light); }
+        .product-icon.product-icon-sdf { background: var(--brand-bg); }
 
         .product-tag {
             display: inline-block;
@@ -437,6 +441,22 @@
             font-size: 14px;
             color: var(--text-secondary);
             line-height: 1.6;
+        }
+
+        .products-actions {
+            margin-top: 40px;
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .products-actions .btn-demo {
+            padding: 8px 48px;
+            font-size: 15px;
+            font-weight: 500;
+            min-width: 180px;
+            border: 1px solid var(--text-secondary);
         }
 
         /* DIVIDER */
@@ -536,7 +556,7 @@
 <!-- NAV -->
 <nav>
     <div class="nav-logo">
-        <img src="assets/etapsky_logo.svg" alt="Etapsky" />
+        <img src="./assets/etapsky_logo.svg" alt="Etapsky" />
     </div>
     <div class="nav-links">
         <a href="#products">Products</a>
@@ -557,7 +577,7 @@
 <!-- HERO -->
 <section class="hero">
     <div class="hero-logo">
-        <img src="assets/etapsky_logo.svg" alt="Etapsky" />
+        <img src="./assets/etapsky_logo.svg" alt="Etapsky" />
     </div>
     <div class="hero-badge-wrap"><div class="hero-badge">Technology & Software</div></div>
     <h1>Building tools that <span>move things forward</span></h1>
@@ -580,13 +600,8 @@
     <div class="products-grid">
 
         <div class="product-card">
-            <div class="product-icon primary">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <rect x="3" y="2" width="14" height="16" rx="2" stroke="var(--primary)" stroke-width="1.5"/>
-                    <line x1="6" y1="7" x2="14" y2="7" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round"/>
-                    <line x1="6" y1="10" x2="14" y2="10" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round"/>
-                    <line x1="6" y1="13" x2="10" y2="13" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round"/>
-                </svg>
+            <div class="product-icon product-icon-sdf">
+                <img src="assets/sdf_icon.svg" alt="SDF" width="32" height="40" />
             </div>
             <span class="product-tag active">Active</span>
             <h3>SDF — Smart Document Format</h3>
@@ -601,7 +616,7 @@
                     <rect x="14" y="2" width="5" height="16" rx="1.5" fill="var(--secondary)"/>
                 </svg>
             </div>
-            <span class="product-tag soon">Coming soon</span>
+            <span class="product-tag active">Active</span>
             <h3>sdf-kit</h3>
             <p>TypeScript SDK for producing and consuming SDF files. Works in Node.js, browser, and Electron environments.</p>
         </div>
@@ -612,11 +627,15 @@
                     <polyline points="3,15 3,5 10,10 17,5 17,15" stroke="var(--primary)" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
                 </svg>
             </div>
-            <span class="product-tag soon">Coming soon</span>
+            <span class="product-tag active">Active</span>
             <h3>Developer Tools</h3>
             <p>CLI utilities, integrations, and infrastructure tooling for modern software teams.</p>
         </div>
 
+    </div>
+    <div class="products-actions">
+        <a href="/sdf/demo-web/" class="btn-primary btn-demo" target="_blank" rel="noopener noreferrer">Try Producer</a>
+        <a href="/sdf/demo-reader/" class="btn-primary btn-demo" target="_blank" rel="noopener noreferrer">Try Reader</a>
     </div>
 </section>
 
@@ -649,7 +668,7 @@
 <!-- FOOTER -->
 <footer>
     <div class="footer-left">
-        <img src="assets/etapsky_mark.svg" alt="" width="20" height="20" />
+        <img src="./assets/etapsky_mark.svg" alt="" width="20" height="20" />
         © 2026 Etapsky Inc.
     </div>
     <div class="footer-links">

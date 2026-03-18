@@ -84,15 +84,15 @@
         .nav-logo {
             display: flex;
             align-items: center;
-            height: 52px;
+            max-width: 240px;
         }
         .nav-logo picture {
             display: flex;
-            height: 100%;
+            width: 100%;
         }
         .nav-logo img {
-            height: 100%;
-            width: auto;
+            width: 100%;
+            height: auto;
             display: block;
         }
 
@@ -548,7 +548,6 @@
         /* Tablet narrow: ≤ 680px */
         @media (max-width: 680px) {
             nav { padding: 0 20px; height: 56px; }
-            .nav-logo { height: 44px; }
             .nav-links a[href="#products"],
             .nav-links a[href="#about"] { display: none; }
 

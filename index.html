@@ -95,6 +95,9 @@
             height: auto;
             display: block;
         }
+        .nav-logo .logo-dark { display: none; }
+        html[data-theme="dark"] .nav-logo .logo-light { display: none; }
+        html[data-theme="dark"] .nav-logo .logo-dark { display: block; }
 
         .nav-links {
             display: flex;
@@ -198,6 +201,9 @@
             margin: 0 auto 40px;
         }
         .hero-logo img { width: 100%; height: auto; display: block; }
+        .hero-logo .logo-dark { display: none; }
+        html[data-theme="dark"] .hero-logo .logo-light { display: none; }
+        html[data-theme="dark"] .hero-logo .logo-dark { display: block; }
 
         /* Heading */
         .hero h1 {
@@ -595,10 +601,8 @@
 <!-- NAV -->
 <nav>
     <div class="nav-logo">
-        <picture>
-            <source srcset="./assets/etapsky_logo_dark.svg" media="(prefers-color-scheme: dark)">
-            <img src="./assets/etapsky_logo.svg" alt="Etapsky">
-        </picture>
+        <img src="./assets/etapsky_logo.svg" alt="Etapsky" class="logo-light">
+        <img src="./assets/etapsky_logo_dark.svg" alt="Etapsky" class="logo-dark">
     </div>
     <div class="nav-links">
         <a href="#products">Products</a>
@@ -619,10 +623,8 @@
 <!-- HERO -->
 <section class="hero">
     <div class="hero-logo">
-        <picture>
-            <source srcset="./assets/etapsky_logo_dark.svg" media="(prefers-color-scheme: dark)">
-            <img src="./assets/etapsky_logo.svg" alt="Etapsky">
-        </picture>
+        <img src="./assets/etapsky_logo.svg" alt="Etapsky" class="logo-light">
+        <img src="./assets/etapsky_logo_dark.svg" alt="Etapsky" class="logo-dark">
     </div>
     <div class="hero-badge-wrap"><div class="hero-badge">Open Document Infrastructure</div></div>
     <h1>Documents that carry<br><em>their own data</em></h1>

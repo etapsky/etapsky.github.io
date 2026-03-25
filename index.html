@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./assets/etapsky_mark.svg" type="image/svg+xml">
+    <link rel="icon" href="./assets/brand/fennec-fox.svg" type="image/svg+xml">
     <title>Etapsky — Technology</title>
     <script>
       (function(){var d=document.documentElement,k='etapsky-theme',s=localStorage.getItem(k),p=window.matchMedia('(prefers-color-scheme: dark)').matches;d.setAttribute('data-theme',s||(p?'dark':'light'));})();
@@ -29,7 +29,6 @@
             --border:          rgba(0,0,0,0.07);
             --bg:              #ffffff;
             --card-bg:         #f5f5f7;
-            --nav-bg:          rgba(255,255,255,0.82);
             --shadow-sm:       0 2px 12px rgba(0,0,0,0.05);
             --shadow-md:       0 8px 40px rgba(0,0,0,0.10);
             --shadow-lg:       0 20px 60px rgba(0,0,0,0.13);
@@ -47,7 +46,6 @@
             --border:          rgba(255,255,255,0.08);
             --bg:              #000000;
             --card-bg:         #1c1c1e;
-            --nav-bg:          rgba(0,0,0,0.82);
             --shadow-sm:       0 2px 12px rgba(0,0,0,0.3);
             --shadow-md:       0 8px 40px rgba(0,0,0,0.5);
             --shadow-lg:       0 20px 60px rgba(0,0,0,0.6);
@@ -75,16 +73,13 @@
             justify-content: space-between;
             padding: 0 40px;
             height: 64px;
-            background: var(--nav-bg);
-            backdrop-filter: saturate(180%) blur(20px);
-            -webkit-backdrop-filter: saturate(180%) blur(20px);
-            border-bottom: 1px solid var(--border);
+            background: transparent;
         }
 
         .nav-logo {
             display: flex;
             align-items: center;
-            max-width: 240px;
+            max-width: 210px;
         }
         .nav-logo picture {
             display: flex;
@@ -95,9 +90,7 @@
             height: auto;
             display: block;
         }
-        .nav-logo .logo-dark { display: none; }
-        html[data-theme="dark"] .nav-logo .logo-light { display: none; }
-        html[data-theme="dark"] .nav-logo .logo-dark { display: block; }
+        html[data-theme="dark"] .nav-logo img { filter: invert(1); }
 
         .nav-links {
             display: flex;
@@ -201,9 +194,7 @@
             margin: 0 auto 40px;
         }
         .hero-logo img { width: 100%; height: auto; display: block; }
-        .hero-logo .logo-dark { display: none; }
-        html[data-theme="dark"] .hero-logo .logo-light { display: none; }
-        html[data-theme="dark"] .hero-logo .logo-dark { display: block; }
+        html[data-theme="dark"] .hero-logo img { filter: invert(1); }
 
         /* Heading */
         .hero h1 {
@@ -227,9 +218,21 @@
             font-weight: 400;
             color: var(--text-secondary);
             max-width: 560px;
-            margin: 0 auto 48px;
+            margin: 0 auto 28px;
             line-height: 1.65;
             letter-spacing: -0.2px;
+        }
+
+        .hero-sdf-mark {
+            margin: 0 auto 40px;
+            text-align: center;
+            line-height: 0;
+        }
+        .hero-sdf-mark img {
+            width: min(80px, 22vw);
+            height: auto;
+            display: inline-block;
+            vertical-align: middle;
         }
 
         /* Actions */
@@ -516,6 +519,18 @@
             font-size: 13px;
             color: var(--text-tertiary);
         }
+        .footer-mark {
+            display: inline-flex;
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+        }
+        .footer-mark img {
+            width: 18px;
+            height: 18px;
+            display: block;
+        }
+        html[data-theme="dark"] .footer-mark img { filter: invert(1); }
 
         .footer-links {
             display: flex;
@@ -601,8 +616,7 @@
 <!-- NAV -->
 <nav>
     <div class="nav-logo">
-        <img src="./assets/etapsky_logo.svg" alt="Etapsky" class="logo-light">
-        <img src="./assets/etapsky_logo_dark.svg" alt="Etapsky" class="logo-dark">
+        <img src="./assets/brand/horizonral_logo.svg" alt="Etapsky" />
     </div>
     <div class="nav-links">
         <a href="#products">Products</a>
@@ -623,12 +637,14 @@
 <!-- HERO -->
 <section class="hero">
     <div class="hero-logo">
-        <img src="./assets/etapsky_logo.svg" alt="Etapsky" class="logo-light">
-        <img src="./assets/etapsky_logo_dark.svg" alt="Etapsky" class="logo-dark">
+        <img src="./assets/brand/vertical_logo.svg" alt="Etapsky" />
     </div>
     <div class="hero-badge-wrap"><div class="hero-badge">Open Document Infrastructure</div></div>
     <h1>Documents that carry<br><em>their own data</em></h1>
     <p>SDF pairs a human-readable PDF with machine-readable JSON in a single file. When both sides speak SDF, data extraction is zero-cost and zero-error — no OCR, no manual re-keying.</p>
+    <div class="hero-sdf-mark" aria-hidden="true">
+        <img src="./assets/sdf_icon.svg" alt="" width="80" height="80" />
+    </div>
     <div class="hero-actions">
         <a href="https://github.com/etapsky" class="btn-primary" target="_blank" rel="noopener noreferrer">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
@@ -650,7 +666,7 @@
         <!-- SDF — featured card -->
         <div class="product-card card-featured">
             <div class="card-visual">
-                <img src="assets/sdf_icon.svg" alt="SDF" width="64" height="80" />
+                <img src="./assets/sdf_icon.svg" alt="SDF" width="64" height="64" />
             </div>
             <div class="card-body">
                 <span class="product-tag tag-active">Active</span>
@@ -768,7 +784,9 @@
 <!-- FOOTER -->
 <footer>
     <div class="footer-left">
-        <img src="./assets/etapsky_mark.svg" alt="" width="18" height="18" />
+        <span class="footer-mark" aria-hidden="true">
+            <img src="./assets/brand/fennec-fox.svg" alt="" width="18" height="18" />
+        </span>
         © 2026 Etapsky · Yunus YILDIZ
     </div>
     <div class="footer-links">
